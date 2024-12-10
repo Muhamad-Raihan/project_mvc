@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ubah Biodata</title>
+	<!-- Tambahkan Bootstrap CSS CDN -->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+
+<h1 class="mb-4">Ubah Biodata</h1>
+
+<!-- Tambahkan tombol kembali dengan class Bootstrap -->
+<a href="?c=contact" class="btn btn-secondary mb-4">Kembali</a>
+
+<!-- Tambahkan class Bootstrap pada form -->
+<form action="?c=contact&m=edit&id=<?=$contact['id']?>" method="post">
+	<div class="form-group">
+		<label for="nama">Nama</label>
+		<input type="text" class="form-control" name="nama" id="nama" value="<?php echo (isset($_POST['nama'])) ? $_POST['nama'] : $contact['nama'] ?>">
+	</div>
+	<div class="form-group">
+		<label for="telepon">Telepon</label>
+		<input type="text" class="form-control" name="telepon" id="telepon" value="<?php echo (isset($_POST['telepon'])) ? $_POST['telepon'] : $contact['telepon'] ?>">
+	</div>
+	<div class="form-group">
+		<label for="email">Email</label>
+		<input type="email" class="form-control" name="email" id="email" value="<?php echo (isset($_POST['email'])) ? $_POST['email'] : $contact['email'] ?>">
+	</div>
+	<div class="form-group">
+		<label for="alamat">Alamat</label>
+		<textarea name="alamat" id="alamat" class="form-control" rows="5"><?php echo (isset($_POST['alamat'])) ? $_POST['alamat'] : $contact['alamat'] ?></textarea>
+	</div>
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary">Simpan</button>
+	</div>
+
+	<!-- Error Handling -->
+	<?php if ($errors) { ?>
+		<div class="alert alert-danger">
+			<h4>Error:</h4>
+			<ul>
+				<?php foreach ($errors as $value) { ?>
+					<li><?php echo $value; ?></li>
+				<?php } ?>
+			</ul>
+		</div>
+	<?php } ?>
+</form>
+
+<!-- Tambahkan Bootstrap JS dan Popper.js untuk mendukung fitur Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
